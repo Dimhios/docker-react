@@ -1,0 +1,12 @@
+sudo: required
+language: generic 
+
+services:
+  - docker
+  
+before_install:
+  - docker build -t Dimhios/docker-react -f Dockerfile.dev . 
+  
+  
+script:
+  - docker run -e CI=true Dimhios/docker-react npm run test
